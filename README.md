@@ -1,5 +1,8 @@
-## GueZas-Los-Zetas
+# Ángel Francisco García Guzmán - A01704203
+
+# GueZas-Los-Zetas
 Programa en C++ para el control y logística de una Hamburguesería
+
 
 # Contexto
 ¿A quién no le gusta una buena hamburguesa?
