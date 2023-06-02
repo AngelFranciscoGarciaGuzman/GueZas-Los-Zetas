@@ -10,15 +10,15 @@ class Orden{
 
     //Crear clase "Orden" que tiene como parametros las hamburguesas, malteadas y papas. 
     private:
-        Hamburguesa hamburguesas[4];
-        Malteada malteadas[4];
-        Papas papas[4]; 
+        Hamburguesa * hamburguesas[4];
+        Malteada * malteadas[4];
+        Papas * papas[4]; 
 
     public:
         Orden(){};
-        void agrega_hamburguesa(std::string, std::string, std::string, int);
-        void agrega_malteada(std::string, float, int);
-        void agrega_papas(std::string, std::string, int);
+        void agrega_hamburguesa(Hamburguesa *hamburguesa, int);
+        void agrega_malteada(Malteada *Malteada, int);
+        void agrega_papas(Papas *papa, int);
         std::string estatus_orden();
 
         void asignar_precio_h(float, int);
@@ -40,8 +40,8 @@ class Orden{
  * @return void
  */
 
-void Orden::agrega_hamburguesa(std::string que, std::string ve, std::string sa, int posicion){
-    hamburguesas[posicion] = Hamburguesa(que, ve, sa);
+void Orden::agrega_hamburguesa(Hamburguesa *hamburguesa, int posicion){
+    hamburguesas[posicion] = hamburguesa;
 }
 
 /**
@@ -54,8 +54,8 @@ void Orden::agrega_hamburguesa(std::string que, std::string ve, std::string sa, 
  * @param posicion posición en el array donde se guarda la malteada
  * @return void
  */
-void Orden::agrega_malteada(std::string sabor, float magnitud, int posicion){
-    malteadas[posicion] = Malteada(sabor, magnitud);
+void Orden::agrega_malteada(Malteada *malteada, int posicion){
+    malteadas[posicion] = malteada;
 }
 
 /**
@@ -68,8 +68,8 @@ void Orden::agrega_malteada(std::string sabor, float magnitud, int posicion){
  * @param posicion posición en el array donde se guarda la orden de papas
  * @return void
  */
-void Orden::agrega_papas(std::string estilo, std::string tamano, int posicion){
-    papas[posicion] = Papas(estilo, tamano);
+void Orden::agrega_papas(Papas *papa, int posicion){
+    papas[posicion] = papa;
 }
 
 /**
@@ -82,7 +82,7 @@ void Orden::agrega_papas(std::string estilo, std::string tamano, int posicion){
  * @return void
  */
 void Orden::asignar_precio_h(float precio, int posicion){
-    hamburguesas[posicion].set_precio(precio);
+    hamburguesas[posicion] -> set_precio(precio);
 }
 
 /**
@@ -95,7 +95,7 @@ void Orden::asignar_precio_h(float precio, int posicion){
  * @return void
  */
 void Orden::asignar_precio_m(float precio, int posicion){
-    malteadas[posicion].set_precio(precio);
+    malteadas[posicion] -> set_precio(precio);
 }
 
 /**
@@ -108,7 +108,7 @@ void Orden::asignar_precio_m(float precio, int posicion){
  * @return void
  */
 void Orden::asignar_precio_p(float precio, int posicion){
-    papas[posicion].set_precio(precio);
+    papas[posicion] -> set_precio(precio);
 }
 
 
@@ -123,30 +123,31 @@ void Orden::asignar_precio_p(float precio, int posicion){
  */
 std::string Orden::estatus_orden(){
     float acum = 0;
-    for(int i = 0 ; i < 4 ; i++){
-        acum = acum + hamburguesas[i].get_precio();
-        acum = acum + malteadas[i].get_precio();
-        acum = acum + papas[i].get_precio();
+    for(int i = 0 ; i < 1 ; i++){
+        acum = acum + hamburguesas[i] -> get_precio();
+        acum = acum + malteadas[i] -> get_precio();
+        acum = acum + papas[i] -> get_precio();
     }
 
     std::stringstream aux;
 
-    for(int i = 0 ; i < 4 ; i++){
-        aux << "hamburguesa: " << i+1 << " " << hamburguesas[i].to_string() << std::endl;
+    /*
+    for(int i = 0 ; i = 0 ; i++){
+        aux << "hamburguesa: " << i+1 << " " << hamburguesas[i] -> to_string() << std::endl;
     }
 
     for(int i = 0 ; i < 4 ; i++){
-        aux << "malteada: " << i+1 << " " << malteadas[i].to_string() << std::endl;
+        aux << "malteada: " << i+1 << " " << malteadas[i] -> to_string() << std::endl;
     }
 
     for(int i = 0 ; i < 4 ; i++){
-        aux << "papas: " << i+1 << " " << papas[i].to_string() << std::endl;
+        aux << "papas: " << i+1 << " " << papas[i] -> to_string() << std::endl;
     }
 
+    */
     aux << "total a pagar: " << acum << std::endl;
 
     return aux.str();
-
 }
 
 #endif

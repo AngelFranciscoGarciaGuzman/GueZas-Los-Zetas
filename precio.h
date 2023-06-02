@@ -4,6 +4,7 @@
 
 class Articulo{
 protected:
+
     float precio;
     float promocion;
 
@@ -15,8 +16,8 @@ public:
     float get_precio();
     float get_promo();
 
-    void set_precio(float );
-    void set_promo(float );
+    virtual void set_precio(float );
+    virtual void set_promo(float );
 
 };
 
