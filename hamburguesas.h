@@ -35,6 +35,7 @@ class Hamburguesa: public Articulo{
     void set_verdura(std::string );
     void set_salsa(std::string );
 
+    void set_precio(float n_precio) override;
     std::string to_string();
 };
 
@@ -62,6 +63,11 @@ void Hamburguesa::set_verdura(std::string n_pan){
 
 void Hamburguesa::set_salsa(std::string n_salsa){
     salsa = n_salsa;
+}
+
+void Hamburguesa::set_precio(float n_precio) {
+    precio = n_precio;
+    precio = precio - (precio * promocion);
 }
 
 std::string Hamburguesa::to_string(){

@@ -28,6 +28,7 @@ class Malteada: public Articulo{
     void set_sabor(std::string );
     void set_magnitud(float );
 
+    void set_precio(float n_precio) override;
     std::string to_string();
 
 };
@@ -47,6 +48,11 @@ void Malteada::set_sabor(std:: string n_sabor){
 
 void Malteada::set_magnitud(float n_magnitud){
     magnitud = n_magnitud;
+}
+
+void Malteada::set_precio(float n_precio) {
+    precio = n_precio;
+    precio = precio - (precio * promocion);
 }
 
 std::string Malteada::to_string(){

@@ -16,9 +16,9 @@ class Orden{
 
     public:
         Orden(){};
-        void agrega_hamburguesa(Hamburguesa *hamburguesa, int);
-        void agrega_malteada(Malteada *Malteada, int);
-        void agrega_papas(Papas *papa, int);
+        void agrega_hamburguesa(Articulo *hamburguesa, int);
+        void agrega_malteada(Articulo *Malteada, int);
+        void agrega_papas(Articulo *papa, int);
         std::string estatus_orden();
 
         void asignar_precio_h(float, int);
@@ -33,15 +33,12 @@ class Orden{
  *
  * Crea un objeto de tipo Hamburguesa con los valores proporcionados y lo guarda en el array de hamburguesas de la orden en la posición especificada.
  *
- * @param que queso de la hamburguesa
- * @param ve verdura de la hamburguesa
- * @param sa salsa de la hamburguesa
+ * @param hamburguesa puntero al objeto de tipo Articulo que representa la hamburguesa
  * @param posicion posición en el array donde se guarda la hamburguesa
  * @return void
  */
-
-void Orden::agrega_hamburguesa(Hamburguesa *hamburguesa, int posicion){
-    hamburguesas[posicion] = hamburguesa;
+void Orden::agrega_hamburguesa(Articulo *hamburguesa, int posicion) {
+    hamburguesas[posicion] = dynamic_cast<Hamburguesa*>(hamburguesa);
 }
 
 /**
@@ -49,13 +46,12 @@ void Orden::agrega_hamburguesa(Hamburguesa *hamburguesa, int posicion){
  *
  * Crea un objeto de tipo Malteada con los valores proporcionados y lo guarda en el array de malteadas de la orden en la posición especificada.
  *
- * @param sabor sabor de la malteada
- * @param magnitud tamaño de la malteada en litros
+ * @param malteada puntero al objeto de tipo Articulo que representa la malteada
  * @param posicion posición en el array donde se guarda la malteada
  * @return void
  */
-void Orden::agrega_malteada(Malteada *malteada, int posicion){
-    malteadas[posicion] = malteada;
+void Orden::agrega_malteada(Articulo *malteada, int posicion) {
+    malteadas[posicion] = dynamic_cast<Malteada*>(malteada);
 }
 
 /**
@@ -63,13 +59,12 @@ void Orden::agrega_malteada(Malteada *malteada, int posicion){
  *
  * Crea un objeto de tipo Papas con los valores proporcionados y lo guarda en el array de papas de la orden en la posición especificada.
  *
- * @param estilo estilo de las papas
- * @param tamano tamaño de las papas
+ * @param papa puntero al objeto de tipo Articulo que representa la orden de papas
  * @param posicion posición en el array donde se guarda la orden de papas
  * @return void
  */
-void Orden::agrega_papas(Papas *papa, int posicion){
-    papas[posicion] = papa;
+void Orden::agrega_papas(Articulo *papa, int posicion) {
+    papas[posicion] = dynamic_cast<Papas*>(papa);
 }
 
 /**
@@ -124,30 +119,32 @@ void Orden::asignar_precio_p(float precio, int posicion){
 std::string Orden::estatus_orden(){
     float acum = 0;
     for(int i = 0 ; i < 1 ; i++){
+
         acum = acum + hamburguesas[i] -> get_precio();
         acum = acum + malteadas[i] -> get_precio();
         acum = acum + papas[i] -> get_precio();
     }
 
     std::stringstream aux;
-
-    /*
-    for(int i = 0 ; i = 0 ; i++){
-        aux << "hamburguesa: " << i+1 << " " << hamburguesas[i] -> to_string() << std::endl;
+    
+    for(int i = 0 ; i < 4 ; i++){
+        aux << "hamburguesa: " << i+1 << " " << hamburguesas[i]->to_string() << std::endl;
     }
 
     for(int i = 0 ; i < 4 ; i++){
-        aux << "malteada: " << i+1 << " " << malteadas[i] -> to_string() << std::endl;
+        aux << "malteada: " << i+1 << " " << malteadas[i]->to_string() << std::endl;
     }
 
     for(int i = 0 ; i < 4 ; i++){
-        aux << "papas: " << i+1 << " " << papas[i] -> to_string() << std::endl;
+        aux << "papas: " << i+1 << " " << papas[i]->to_string() << std::endl;
     }
 
-    */
-    aux << "total a pagar: " << acum << std::endl;
+    aux << "total a pagar: " << acum;
 
     return aux.str();
-}
+
+    }
+
+
 
 #endif

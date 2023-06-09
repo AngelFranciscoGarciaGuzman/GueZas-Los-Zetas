@@ -27,6 +27,7 @@ class Papas: public Articulo{
     void set_estilo(std::string );
     void set_tamano(std::string );
 
+    void set_precio(float n_precio) override;
     std::string to_string();
 
 };
@@ -49,6 +50,11 @@ void Papas::set_estilo(std:: string n_estilo){
 
 void Papas::set_tamano(std::string n_tamano){
     tamano = n_tamano;
+}
+
+void Papas::set_precio(float n_precio) {
+    precio = n_precio;
+    precio = precio - (precio * promocion);
 }
 
 std::string Papas::to_string(){
