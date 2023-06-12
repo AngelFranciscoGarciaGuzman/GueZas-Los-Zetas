@@ -16,7 +16,7 @@ public:
     float get_precio();
     float get_promo();
 
-    virtual void set_precio(float ) = 0;
+    virtual void set_precio(float );
     virtual void set_promo(float );
     
     /**
