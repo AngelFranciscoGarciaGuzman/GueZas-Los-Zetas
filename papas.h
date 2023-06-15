@@ -1,63 +1,75 @@
-#include<string>
+#include <string>
 #include "precio.h"
+
 #ifndef PAPAS_H_
 #define PAPAS_H_
 
-
-class Papas: public Articulo{
-
-    //Crear esqueleto de unas papas
-    private:
-
+class Papas : public Articulo {
+private:
     std::string estilo;
     std::string tamano;
-    
-    public:
 
-    //Constructor por default de papas
-    Papas(){};
+public:
+    // Constructor por defecto de Papas
+    Papas() {};
 
-    //Constructor con parametros definidos
-    Papas(std::string es, std::string ma):estilo(es), tamano(ma){};
+    // Constructor con parámetros definidos
+    Papas(std::string es, std::string ma) : estilo(es), tamano(ma) {};
 
-    //Funciones get
+    // Funciones get para obtener los valores de los atributos
     std::string get_estilo();
     std::string get_tamano();
-    //Funciones set;
-    void set_estilo(std::string );
-    void set_tamano(std::string );
 
-    void set_precio(float n_precio) override;
-    std::string to_string();
+    // Funciones set para asignar nuevos valores a los atributos
+    void set_estilo(std::string);
+    void set_tamano(std::string);
 
+    // Implementación de la función virtual pura de la clase base
+    std::string to_string() override;
 };
 
-
-
-
-std::string Papas::get_estilo(){
-    return estilo;   
+/**
+ * get_estilo devuelve el estilo de las papas.
+ *
+ * @return estilo de las papas.
+ */
+std::string Papas::get_estilo() {
+    return estilo;
 }
 
-std::string Papas::get_tamano(){
+/**
+ * get_tamano devuelve el tamaño de las papas.
+ *
+ * @return tamaño de las papas.
+ */
+std::string Papas::get_tamano() {
     return tamano;
 }
 
-
-void Papas::set_estilo(std:: string n_estilo){
+/**
+ * set_estilo asigna un nuevo estilo a las papas.
+ *
+ * @param n_estilo nuevo estilo de las papas.
+ */
+void Papas::set_estilo(std::string n_estilo) {
     estilo = n_estilo;
 }
 
-void Papas::set_tamano(std::string n_tamano){
+/**
+ * set_tamano asigna un nuevo tamaño a las papas.
+ *
+ * @param n_tamano nuevo tamaño de las papas.
+ */
+void Papas::set_tamano(std::string n_tamano) {
     tamano = n_tamano;
 }
 
-void Papas::set_precio(float n_precio) {
-    precio = n_precio;
-    precio = precio - (precio * promocion);
-}
-
-std::string Papas::to_string(){
+/**
+ * to_string convierte los atributos en una cadena de texto.
+ *
+ * @return cadena de texto con los valores y texto concatenado.
+ */
+std::string Papas::to_string() {
     std::stringstream aux;
     aux << "estilo: " << estilo << " tamano: " << tamano << std::endl;
     return aux.str();

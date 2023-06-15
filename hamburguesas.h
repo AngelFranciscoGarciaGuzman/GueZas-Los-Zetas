@@ -1,80 +1,100 @@
-#include<string>
-#include"precio.h"
-#include<sstream>
+#include <string>
+#include "precio.h"
+#include <sstream>
+
 #ifndef HAMBURGUESA_H_
 #define HAMBURGUESA_H_
 
-
-
-class Hamburguesa: public Articulo{
-
-    //Crear esqueleto de una hamburguesa
-    private: 
-
+class Hamburguesa : public Articulo {
+private:
     std::string queso;
     std::string verduras;
     std::string salsa;
 
-    public:
+public:
+    // Constructor por defecto de Hamburguesa
+    Hamburguesa() {};
 
-    //Constructor hamburguesa default
-    Hamburguesa(){};
+    // Constructor con parámetros definidos
+    Hamburguesa(std::string que, std::string ve, std::string sa) : queso(que), verduras(ve), salsa(sa) {};
 
-    //Constructor hamburguesa con parametros definidos
-    Hamburguesa(std::string que, std::string ve, std::string sa): queso(que), verduras(ve), salsa(sa){};
-
-    //Funciones "get"
-
+    // Funciones get para obtener los valores de los atributos
     std::string get_queso();
     std::string get_verdura();
     std::string get_salsa();
 
-    //Funciones "set"
+    // Funciones set para asignar nuevos valores a los atributos
+    void set_queso(std::string);
+    void set_verdura(std::string);
+    void set_salsa(std::string);
 
-    void set_queso(std::string );
-    void set_verdura(std::string );
-    void set_salsa(std::string );
-
-    void set_precio(float n_precio) override;
-    std::string to_string();
+    // Implementación de la función virtual pura de la clase base
+    std::string to_string() override;
 };
 
-//Definir funciones "get"
-std::string Hamburguesa::get_queso(){
+/**
+ * get_queso devuelve el tipo de queso de la hamburguesa.
+ *
+ * @return tipo de queso de la hamburguesa.
+ */
+std::string Hamburguesa::get_queso() {
     return queso;
 }
 
-std::string Hamburguesa::get_verdura(){
+/**
+ * get_verdura devuelve el tipo de verduras de la hamburguesa.
+ *
+ * @return tipo de verduras de la hamburguesa.
+ */
+std::string Hamburguesa::get_verdura() {
     return verduras;
 }
 
-std::string Hamburguesa::get_salsa(){
+/**
+ * get_salsa devuelve el tipo de salsa de la hamburguesa.
+ *
+ * @return tipo de salsa de la hamburguesa.
+ */
+std::string Hamburguesa::get_salsa() {
     return salsa;
 }
 
-//Definir funciones "set"
-void Hamburguesa::set_queso(std::string n_queso){
+/**
+ * set_queso asigna un nuevo tipo de queso a la hamburguesa.
+ *
+ * @param n_queso nuevo tipo de queso de la hamburguesa.
+ */
+void Hamburguesa::set_queso(std::string n_queso) {
     queso = n_queso;
 }
 
-void Hamburguesa::set_verdura(std::string n_pan){
-    verduras = n_pan;
+/**
+ * set_verdura asigna un nuevo tipo de verduras a la hamburguesa.
+ *
+ * @param n_verdura nuevo tipo de verduras de la hamburguesa.
+ */
+void Hamburguesa::set_verdura(std::string n_verdura) {
+    verduras = n_verdura;
 }
 
-void Hamburguesa::set_salsa(std::string n_salsa){
+/**
+ * set_salsa asigna un nuevo tipo de salsa a la hamburguesa.
+ *
+ * @param n_salsa nuevo tipo de salsa de la hamburguesa.
+ */
+void Hamburguesa::set_salsa(std::string n_salsa) {
     salsa = n_salsa;
 }
 
-void Hamburguesa::set_precio(float n_precio) {
-    precio = n_precio;
-    precio = precio - (precio * promocion);
-}
-
-std::string Hamburguesa::to_string(){
+/**
+ * to_string convierte los atributos en una cadena de texto.
+ *
+ * @return cadena de texto con los valores y texto concatenado.
+ */
+std::string Hamburguesa::to_string() {
     std::stringstream aux;
-    aux << "queso: " << queso << " verduras: " << verduras << " salsa: "<< salsa << std::endl;
+    aux << "queso: " << queso << " verduras: " << verduras << " salsa: " << salsa << std::endl;
     return aux.str();
-
 }
 
 #endif

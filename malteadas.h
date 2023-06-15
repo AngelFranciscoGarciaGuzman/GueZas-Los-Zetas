@@ -1,61 +1,76 @@
-#include<string>
+#include <string>
 #include "precio.h"
+
 #ifndef MALTEADA_H_
 #define MALTEADA_H_
 
-
-class Malteada: public Articulo{
-
-    //Crear esqueleto de una malteada
-    private:
-
+class Malteada : public Articulo {
+private:
     std::string sabor;
     float magnitud;
-    
-    public:
 
-    //Constructor default de malteada
-    Malteada():sabor(""), magnitud(0){};
+public:
+    // Constructor por defecto de Malteada
+    Malteada() : sabor(""), magnitud(0) {};
 
-    //Constructor con parametros definidos
-    Malteada(std::string sa, float ma):sabor(sa), magnitud(ma){};
+    // Constructor con parámetros definidos
+    Malteada(std::string sa, float ma) : sabor(sa), magnitud(ma) {};
 
-    //Funciones get
+    // Funciones get para obtener los valores de los atributos
     std::string get_sabor();
     float get_magnitud();
 
-    //Funciones set
-    void set_sabor(std::string );
-    void set_magnitud(float );
+    // Funciones set para asignar nuevos valores a los atributos
+    void set_sabor(std::string);
+    void set_magnitud(float);
 
-    void set_precio(float n_precio) override;
-    std::string to_string();
-
+    // Implementación de la función virtual pura de la clase base
+    std::string to_string() override;
 };
 
-std::string Malteada::get_sabor(){
-    return sabor;   
+/**
+ * get_sabor devuelve el sabor de la malteada.
+ *
+ * @return sabor de la malteada.
+ */
+std::string Malteada::get_sabor() {
+    return sabor;
 }
 
-float Malteada::get_magnitud(){
+/**
+ * get_magnitud devuelve la magnitud de la malteada.
+ *
+ * @return magnitud de la malteada.
+ */
+float Malteada::get_magnitud() {
     return magnitud;
 }
 
-
-void Malteada::set_sabor(std:: string n_sabor){
+/**
+ * set_sabor asigna un nuevo sabor a la malteada.
+ *
+ * @param n_sabor nuevo sabor de la malteada.
+ */
+void Malteada::set_sabor(std::string n_sabor) {
     sabor = n_sabor;
 }
 
-void Malteada::set_magnitud(float n_magnitud){
+/**
+ * set_magnitud asigna una nueva magnitud a la malteada.
+ *
+ * @param n_magnitud nueva magnitud de la malteada.
+ */
+void Malteada::set_magnitud(float n_magnitud) {
     magnitud = n_magnitud;
 }
 
-void Malteada::set_precio(float n_precio) {
-    precio = n_precio;
-    precio = precio - (precio * promocion);
-}
 
-std::string Malteada::to_string(){
+/**
+ * to_string convierte los atributos en una cadena de texto.
+ *
+ * @return cadena de texto con los valores y texto concatenado.
+ */
+std::string Malteada::to_string() {
     std::stringstream aux;
     aux << "sabor: " << sabor << " magnitud: " << magnitud << " litros" << std::endl;
     return aux.str();

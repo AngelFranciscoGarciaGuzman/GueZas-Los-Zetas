@@ -18,3 +18,13 @@ Este programa toma los 3 objetos del restaurante (Hamburguesa, malteada y papas)
 -Si lo que ingresa el usuario es incorrecto, el resultado será incongruente y el código falla.
 
 -Si el registro del usuario en el precio es otra cosa que no sea un número, el código falla. 
+
+# Cosas a revisar
+
+-El UML ahora tiene una version actualizada
+
+-El codigo ahora tiene sobreescritura de metodos en las clases hijas marcadas con un "override"
+
+-El uso de polimorfismo esta en el main()
+
+-La clase Articulo ya quedo registrada como abstracta con un metodo registrado como "virtual = 0"

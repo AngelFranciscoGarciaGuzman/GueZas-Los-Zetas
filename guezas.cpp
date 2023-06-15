@@ -116,4 +116,6 @@ int main() {
     // Imprimir el estado actual de la orden
     std::cout << orden.estatus_orden() << "\n";
     std::cout << "------------------\n";
+
+    system("pause");
 }

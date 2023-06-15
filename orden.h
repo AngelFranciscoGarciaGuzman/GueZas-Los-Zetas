@@ -16,9 +16,12 @@ class Orden{
 
     public:
         Orden(){};
+
         void agrega_hamburguesa(Articulo *hamburguesa, int);
         void agrega_malteada(Articulo *Malteada, int);
         void agrega_papas(Articulo *papa, int);
+
+        //Un to_string() de toda la orden y recolecta el precio para mostrarlo al usuario
         std::string estatus_orden();
 
         void asignar_precio_h(float, int);
@@ -38,7 +41,7 @@ class Orden{
  * @return void
  */
 void Orden::agrega_hamburguesa(Articulo *hamburguesa, int posicion) {
-    hamburguesas[posicion] = dynamic_cast<Hamburguesa*>(hamburguesa);
+    hamburguesas[posicion] = static_cast<Hamburguesa*>(hamburguesa);
 }
 
 /**
@@ -51,7 +54,7 @@ void Orden::agrega_hamburguesa(Articulo *hamburguesa, int posicion) {
  * @return void
  */
 void Orden::agrega_malteada(Articulo *malteada, int posicion) {
-    malteadas[posicion] = dynamic_cast<Malteada*>(malteada);
+    malteadas[posicion] = static_cast<Malteada*>(malteada);
 }
 
 /**
@@ -64,7 +67,7 @@ void Orden::agrega_malteada(Articulo *malteada, int posicion) {
  * @return void
  */
 void Orden::agrega_papas(Articulo *papa, int posicion) {
-    papas[posicion] = dynamic_cast<Papas*>(papa);
+    papas[posicion] = static_cast<Papas*>(papa);
 }
 
 /**
@@ -118,7 +121,7 @@ void Orden::asignar_precio_p(float precio, int posicion){
  */
 std::string Orden::estatus_orden(){
     float acum = 0;
-    for(int i = 0 ; i < 1 ; i++){
+    for(int i = 0 ; i < 4 ; i++){
 
         acum = acum + hamburguesas[i] -> get_precio();
         acum = acum + malteadas[i] -> get_precio();
